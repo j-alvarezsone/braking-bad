@@ -1,13 +1,23 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import NavBar from '@/shared/components/NavBar.vue';
+  import { routerLink } from '@/router/link-routes';
+</script>
 
 <template>
   <div class="wrapper">
-    <h1>Hola mundo</h1>
+    <header>
+      <NavBar title="BreakingBad" :links="routerLink" />
+    </header>
+
+    <main>
+      <RouterView />
+    </main>
   </div>
 </template>
 
 <style scoped>
   .wrapper {
     display: flex;
+    flex-direction: column;
   }
 </style>
