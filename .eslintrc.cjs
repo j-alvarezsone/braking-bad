@@ -8,8 +8,14 @@ module.exports = {
     'eslint:recommended',
     '@vue/eslint-config-typescript',
     '@vue/eslint-config-prettier',
+    'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
   parserOptions: {
     ecmaVersion: 'latest',
+  },
+  plugins: ['@tanstack/query'],
+  rules: {
+    '@tanstack/query/exhaustive-deps': 'error',
+    '@tanstack/query/prefer-query-object-syntax': 'error',
   },
 };
