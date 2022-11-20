@@ -4,6 +4,7 @@ import router from './router';
 import { VueQueryPlugin } from '@tanstack/vue-query';
 
 import './assets/main.css';
+import '@/store/characters';
 
 const app = createApp(App);
 
