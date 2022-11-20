@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { toRefs } from 'vue';
+  import { useRouter } from 'vue-router';
   import type { Character } from '../interfaces/Character';
 
   const props = defineProps<{
@@ -11,11 +12,22 @@
   //   target.src = 'https://via.placeholder.com/150';
   // };
 
+  const router = useRouter();
+
+  const goTo = () => {
+    router.push({
+      name: 'character-id',
+      params: {
+        id: props.character.char_id,
+      },
+    });
+  };
+
   const { img, name } = toRefs(props.character);
 </script>
 
 <template>
-  <div class="character_card">
+  <div class="character_card" @click="goTo">
     <img :src="img" alt="Breaking bad images" />
     <h3>{{ name }}</h3>
   </div>
@@ -23,12 +35,10 @@
 
 <style scoped>
   .character_card {
-    /* margin-right: 5px;
-    margin-left: 5px; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* margin-bottom: 10px; */
+    cursor: pointer;
   }
 
   img {
@@ -38,5 +48,11 @@
     object-fit: cover;
     border-radius: 5px 5px 0 0;
     box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.1);
+    trasition: all 0.5s;
+  }
+
+  img:hover {
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
+    trasition: all 0.5s;
   }
 </style>
